@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  mdns-proxy:
+    build: .
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    command:
+      - "-src-iface=eth0"
+      - "-dst-iface=eth1"
+      - "-verbose"
+    restart: unless-stopped
